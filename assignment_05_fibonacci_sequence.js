@@ -54,4 +54,66 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+// =============================================================================
+// PROGRAMMING FUNDAMENTALS — Assignment 5
+// =============================================================================
+
+const readlineSync = require('readline-sync');
+
+// Part A — Print the First N Terms
+function printFibonacciTerms(n) {
+  if (n <= 0) {
+    console.log("Error: N must be a positive integer.");
+    return;
+  }
+
+  let fib = [0, 1];
+  let sequence = [];
+
+  for (let i = 0; i < n; i++) {
+    if (i < 2) {
+      sequence.push(fib[i]);
+    } else {
+      fib[i] = fib[i - 1] + fib[i - 2];
+      sequence.push(fib[i]);
+    }
+  }
+
+  console.log("Fibonacci sequence: " + sequence.join(" "));
+}
+
+// Part B — Check if a Number Belongs to the Sequence
+function checkFibonacciNumber(num) {
+  if (num < 0) {
+    console.log(num + " is NOT a Fibonacci number.");
+    return;
+  }
+
+  let a = 0, b = 1;
+  while (b < num) {
+    let next = a + b;
+    a = b;
+    b = next;
+  }
+
+  if (num === a || num === b) {
+    console.log(num + " is a Fibonacci number.");
+  } else {
+    console.log(num + " is NOT a Fibonacci number.");
+  }
+}
+
+// Main function
+function main() {
+  console.log("=== Part A: Print the First N Terms ===");
+  const n = readlineSync.questionInt("How many terms? ");
+  printFibonacciTerms(n);
+
+  console.log("\n=== Part B: Check if a Number Belongs to the Sequence ===");
+  const num = readlineSync.questionInt("Enter a number to check: ");
+  checkFibonacciNumber(num);
+}
+
+// Run the program
+main();
 

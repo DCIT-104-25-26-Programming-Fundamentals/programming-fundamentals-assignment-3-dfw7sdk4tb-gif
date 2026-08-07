@@ -74,4 +74,110 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+// =============================================================================
+// PROGRAMMING FUNDAMENTALS — Assignment 9
+// =============================================================================
+//
+// TASK: Console-Based Simple Calculator
+// =============================================================================
+
+const readlineSync = require('readline-sync');
+
+// Addition
+function add(a, b) {
+  return a + b;
+}
+
+// Subtraction
+function subtract(a, b) {
+  return a - b;
+}
+
+// Multiplication
+function multiply(a, b) {
+  return a * b;
+}
+
+// Division
+function divide(a, b) {
+  if (b === 0) {
+    console.log("Error: Cannot divide by zero.");
+    return null;
+  }
+  return a / b;
+}
+
+// Modulus
+function modulus(a, b) {
+  if (b === 0) {
+    console.log("Error: Cannot perform modulus with zero.");
+    return null;
+  }
+  return a % b;
+}
+
+// Exponentiation
+function exponentiate(a, b) {
+  return a ** b;
+}
+
+// Display Menu
+function showMenu() {
+  console.log("\n============================");
+  console.log("      SIMPLE CALCULATOR");
+  console.log("============================");
+  console.log("1. Addition");
+  console.log("2. Subtraction");
+  console.log("3. Multiplication");
+  console.log("4. Division");
+  console.log("5. Modulus");
+  console.log("6. Exponentiation");
+  console.log("7. Quit");
+}
+
+// Main function
+function main() {
+  while (true) {
+    showMenu();
+    const choice = readlineSync.questionInt("Select an operation (1-7): ");
+
+    if (choice === 7) {
+      console.log("Goodbye!");
+      break;
+    }
+
+    const num1 = readlineSync.questionFloat("Enter first number : ");
+    const num2 = readlineSync.questionFloat("Enter second number: ");
+
+    let result;
+    if (choice === 1) {
+      result = add(num1, num2);
+      console.log(`Result: ${num1} + ${num2} = ${result.toFixed(2)}`);
+    } else if (choice === 2) {
+      result = subtract(num1, num2);
+      console.log(`Result: ${num1} - ${num2} = ${result.toFixed(2)}`);
+    } else if (choice === 3) {
+      result = multiply(num1, num2);
+      console.log(`Result: ${num1} * ${num2} = ${result.toFixed(2)}`);
+    } else if (choice === 4) {
+      result = divide(num1, num2);
+      if (result !== null) {
+        console.log(`Result: ${num1} / ${num2} = ${result.toFixed(2)}`);
+      }
+    } else if (choice === 5) {
+      result = modulus(num1, num2);
+      if (result !== null) {
+        console.log(`Result: ${num1} % ${num2} = ${result.toFixed(2)}`);
+      }
+    } else if (choice === 6) {
+      result = exponentiate(num1, num2);
+      console.log(`Result: ${num1} ** ${num2} = ${result.toFixed(2)}`);
+    } else {
+      console.log("Error: Invalid choice. Please enter a number between 1 and 7.");
+    }
+  }
+}
+
+// Run the program
+main();
 
